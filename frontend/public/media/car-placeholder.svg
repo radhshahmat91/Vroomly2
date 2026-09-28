@@ -1,0 +1,12 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" fill="#eef0ef"/>
+  <path d="M260 445h680c24 0 44 20 44 44v24H216v-24c0-24 20-44 44-44Z" fill="#14161c"/>
+  <path d="m360 445 92-120h296l92 120H360Z" fill="#2b2d2e"/>
+  <path d="m472 338-58 91h176v-91H472Zm196 0v91h176l-58-91H668Z" fill="#eef0ef" opacity=".9"/>
+  <circle cx="370" cy="514" r="48" fill="#14161c"/>
+  <circle cx="830" cy="514" r="48" fill="#14161c"/>
+  <circle cx="370" cy="514" r="20" fill="#eef0ef"/>
+  <circle cx="830" cy="514" r="20" fill="#eef0ef"/>
+  <text x="600" y="610" text-anchor="middle" fill="#155249" font-family="Arial, sans-serif" font-size="28" font-weight="700">VROOMLY</text>
+  <text x="600" y="648" text-anchor="middle" fill="#2b2d2e" font-family="Arial, sans-serif" font-size="18">Vehicle photo unavailable</text>
+</svg>

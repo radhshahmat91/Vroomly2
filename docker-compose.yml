@@ -1,0 +1,22 @@
+# Spins up a local MongoDB so you don't have to install it natively.
+# Start:  docker compose up -d
+# Stop:   docker compose down          (add -v to also wipe the data volume)
+#
+# Then point backend/.env at it:
+#   MONGO_URI=mongodb://127.0.0.1:27017/vroomly
+#
+# Already have MongoDB (local or Atlas)? Skip this file entirely and just
+# set MONGO_URI accordingly — nothing else in the project depends on Docker.
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: vroomly-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - vroomly_mongo_data:/data/db
+
+volumes:
+  vroomly_mongo_data:

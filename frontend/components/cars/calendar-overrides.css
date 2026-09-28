@@ -1,0 +1,10 @@
+.vroomly-calendar {
+  --rdp-accent-color: var(--color-signal-500);
+  --rdp-accent-background-color: var(--color-signal-100);
+  --rdp-day_button-border-radius: 4px;
+  --rdp-range_start-date-background-color: var(--color-signal-500);
+  --rdp-range_end-date-background-color: var(--color-signal-500);
+  --rdp-today-color: var(--color-route-600);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* Self-hosted via @fontsource — no runtime call to Google Fonts, so the
+   type system renders identically offline, in CI, and in production.
+   Note: no ".css" suffix here — each package's exports map appends it. */
+@import "@fontsource/ibm-plex-sans/400";
+@import "@fontsource/ibm-plex-sans/500";
+@import "@fontsource/ibm-plex-sans/600";
+@import "@fontsource/ibm-plex-sans/700";
+@import "@fontsource/big-shoulders-display/600";
+@import "@fontsource/big-shoulders-display/700";
+@import "@fontsource/big-shoulders-display/800";
+
+/*
+  Design system — "Asphalt & Signal"
+  Grounded in the actual materials of a car-share marketplace: concrete,
+  route lines, dashboard signal lights. Two accents (signal / route) each
+  do one job so neither competes for attention; ink and paper carry the
+  rest of the page.
+*/
+@theme {
+  --font-display: "Big Shoulders Display", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink: #14161c;
+  --color-ink-soft: #2b2d2e;
+  --color-paper: #eef0ef;
+  --color-paper-raised: #f8f8f6;
+
+  --color-signal-50: #fdf1e9;
+  --color-signal-100: #fce6d8;
+  --color-signal-500: #e8601a;
+  --color-signal-600: #cf5313;
+  --color-signal-700: #a8420f;
+
+  --color-route-50: #e8f3f1;
+  --color-route-100: #d9ede9;
+  --color-route-500: #1c6e62;
+  --color-route-600: #155249;
+  --color-route-700: #103d37;
+
+  --color-caution-500: #e8a13a;
+
+  --color-line: #d8dad6;
+  --color-line-strong: #b9bcb6;
+
+  --radius-tight: 0.25rem;
+  --radius-photo: 0.75rem;
+}
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink-soft);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Visible keyboard focus everywhere, styled instead of suppressed. */
+:focus-visible {
+  outline: 2px solid var(--color-signal-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-signal-100);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.thin-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+.thin-scrollbar::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 4px; }
+
+.container-page {
+  max-width: 84rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.prose-copy {
+  max-width: 65ch;
+}
+
+
+/* Vroomly motion + cinematic hero */
+.vroomly-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.9) contrast(1.04);
+  transform: scale(1.02);
+}
+
+.vroomly-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(10, 12, 15, 0.9) 0%, rgba(10, 12, 15, 0.68) 43%, rgba(10, 12, 15, 0.28) 100%),
+    linear-gradient(180deg, rgba(10, 12, 15, 0.35) 0%, rgba(10, 12, 15, 0.15) 50%, rgba(10, 12, 15, 0.72) 100%);
+}
+
+.vroomly-hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.animate-fade-up {
+  animation: vroomlyFadeUp 700ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.animate-fade-up:nth-child(2) { animation-delay: 100ms; }
+.animate-fade-up:nth-child(3) { animation-delay: 180ms; }
+.animate-fade-up:nth-child(4) { animation-delay: 260ms; }
+.animate-fade-up:nth-child(5) { animation-delay: 340ms; }
+
+.vroomly-lift {
+  transition: transform 280ms cubic-bezier(.22, 1, .36, 1), box-shadow 280ms ease, border-color 220ms ease;
+}
+
+.vroomly-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(20, 22, 28, 0.1);
+}
+
+@keyframes vroomlyFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 639px) {
+  .vroomly-hero {
+    min-height: calc(100svh - 4rem);
+  }
+
+  .vroomly-hero__veil {
+    background:
+      linear-gradient(180deg, rgba(10, 12, 15, 0.58) 0%, rgba(10, 12, 15, 0.7) 45%, rgba(10, 12, 15, 0.92) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vroomly-hero__video { display: none; }
+  .vroomly-hero { background: #14161c url('/media/vroomly-hero-poster.jpg') center/cover no-repeat; }
+  .animate-fade-up { animation: none; }
+  .vroomly-lift:hover { transform: none; }
+}
